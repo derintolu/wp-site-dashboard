@@ -17,7 +17,7 @@ import {
     __experimentalVStack as VStack,
     __experimentalHStack as HStack,
 } from '@wordpress/components';
-import { cog, palette, pages } from '@wordpress/icons';
+import { cog, color, pages } from '@wordpress/icons';
 import apiFetch from '@wordpress/api-fetch';
 
 const Settings = () => {
@@ -185,7 +185,7 @@ const Settings = () => {
         {
             name: 'login',
             title: __('Login Page', 'site-dashboard'),
-            icon: palette,
+            icon: color,
             content: (
                 <VStack spacing={4}>
                     <Card>
