@@ -83,6 +83,7 @@ class SiteDashboardPlugin {
             $asset_file['version']
         );
         
+        // Simplified localization to avoid potential errors
         wp_localize_script(
             'site-dashboard-admin',
             'siteDashboardAdmin',
@@ -92,9 +93,9 @@ class SiteDashboardPlugin {
                 'currentUser' => get_current_user_id(),
                 'adminUrl' => admin_url(),
                 'pluginUrl' => plugin_dir_url(__FILE__),
-                'gutenbergIcons' => $this->get_gutenberg_icons(),
-                'pages' => $this->get_pages_for_admin(),
-                'patterns' => $this->get_block_patterns()
+                'gutenbergIcons' => [],
+                'pages' => [],
+                'patterns' => []
             ]
         );
     }
@@ -1034,23 +1035,8 @@ class SiteDashboardPlugin {
             'show_in_rest' => true,
             'rest_base' => 'portal-pages',
             'rest_controller_class' => 'WP_REST_Posts_Controller',
-            'capability_type' => 'page',
+            'capability_type' => 'post',
             'map_meta_cap' => true,
-            'capabilities' => [
-                'edit_post' => 'manage_options',
-                'read_post' => 'manage_options',
-                'delete_post' => 'manage_options',
-                'edit_posts' => 'manage_options',
-                'edit_others_posts' => 'manage_options',
-                'publish_posts' => 'manage_options',
-                'read_private_posts' => 'manage_options',
-                'delete_posts' => 'manage_options',
-                'delete_private_posts' => 'manage_options',
-                'delete_published_posts' => 'manage_options',
-                'delete_others_posts' => 'manage_options',
-                'edit_private_posts' => 'manage_options',
-                'edit_published_posts' => 'manage_options',
-            ],
             'hierarchical' => true,
             'supports' => ['title', 'editor', 'excerpt', 'thumbnail', 'page-attributes', 'custom-fields', 'revisions'],
             'has_archive' => false,
